@@ -1,11 +1,8 @@
 #!/usr/bin/python3
 
 def list_division(my_list, my_list_2, list_length):
-    """Function that divides an element in my_list by the element at the
-    corresponding index in my_list_2
-    """
 
-    ret_list = []
+    new_list = []
     for list_len_ret in range(list_length):
         try:
             res = 0
@@ -17,5 +14,5 @@ def list_division(my_list, my_list_2, list_length):
         except IndexError:
             print("out of range")
         finally:
-            ret_list.append(res)
-    return ret_list
+            new_list.append(res)
+    return new_list
