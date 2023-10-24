@@ -1,6 +1,9 @@
 #!/usr/bin/python3
+"""Module for creating a singly linked list"""
+
 
 class Node:
+    """Sets/gets Node data for a singly linked list"""
 
     def __init__(self, data, next_node=None):
         """Initializes node info
@@ -23,6 +26,8 @@ class Node:
 
     @property
     def data(self):
+        """data getter for data method in Node class
+        """
         return self.__data
 
     @data.setter
@@ -46,9 +51,10 @@ class Node:
 
 
 class SinglyLinkedList(Node):
+    """Creates a singly linked list"""
 
     def __init__(self):
-        
+        """Instantiates the private attribute head"""
         self.__head = None
 
     def sorted_insert(self, value):
@@ -95,6 +101,7 @@ class SinglyLinkedList(Node):
         return ('\n'.join(list_items))
 
     def __len__(self):
+        """Gets the length of the linked list"""
 
         if self.__head:
             cnt = 0
