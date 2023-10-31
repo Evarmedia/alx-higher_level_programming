@@ -1,0 +1,14 @@
+256
+In the CPython implementation of Python 3 with default options/configuration, before the execution of line 2 (print("Love")), a total of 256 int objects would have been created and still be in memory.
+
+This number is determined by the implementation details of CPython, specifically the preallocated small integer optimization.
+
+In CPython, a range of small integers from -5 to 256 are preallocated as singletons. These integers include both positive and negative values. This means that whenever you use any integer within that range, Python reuses the existing singleton object instead of creating a new one.
+
+The constants NSMALLPOSINTS and NSMALLNEGINTS represent the number of preallocated integers for positive and negative values, respectively. In the default configuration, NSMALLPOSINTS is set to 257, and NSMALLNEGINTS is set to 5.
+
+When the script is executed up to line 2 (print("Love")), the following int objects will have been created and still be in memory:
+
+Integer objects representing numbers from -5 to 256
+The integer object representing the value 257, since it is not preallocated and thus will be created as a separate object
+As a result, there will be a total of 256 int objects in memory before line 2 is executed.
