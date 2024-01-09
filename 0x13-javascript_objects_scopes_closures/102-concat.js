@@ -18,5 +18,4 @@ readStream1.on('end', () => {
 });
 
 readStream2.on('end', () => {
-  console.log('Files concatenated successfully!');
 });
