@@ -16,6 +16,3 @@ readStream1.pipe(writeStream, { end: false });
 readStream1.on('end', () => {
   readStream2.pipe(writeStream);
 });
-
-readStream2.on('end', () => {
-});
