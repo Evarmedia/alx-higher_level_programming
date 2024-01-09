@@ -1,11 +1,11 @@
-#!/usr/bin/node 
+#!/usr/bin/node
 
-//a function that reveres an array(list)
+// a function that reveres an array(list)
 
 exports.esrever = function (list) {
-  const newList = []
-  for (let i = list.length-1; i >= 0; i--) {
-    newList.push(list[i])
+  const newList = [];
+  for (let i = list.length - 1; i >= 0; i--) {
+    newList.push(list[i]);
   }
   return newList;
 };
