@@ -1,13 +1,13 @@
 #!/usr/bin/python3
 """
-a script thatt lists all states from database
+a script that lists all states from database
 """
 
 import MySQLdb
 from sys import argv, stderr
 
 
-def listStates():
+def listOf_States():
     """function to list the states in a given database"""
 
     err_message = "usage: {} <username> <password> <db_name>\n".format(argv[0])
@@ -37,4 +37,4 @@ def listStates():
 
 
 if __name__ == "__main__":
-    listStates()
+    listOf_States()
