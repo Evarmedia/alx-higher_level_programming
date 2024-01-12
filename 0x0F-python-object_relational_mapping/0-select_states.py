@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-""" 
-a script thatt lists all states from database
+"""
+Lists all `states` from the database `hbtn_0e_0_usa`
 """
 
 import MySQLdb
@@ -8,30 +8,30 @@ from sys import argv, stderr
 
 
 def listStates():
-    """function to list the states in a given database"""
+    """lists all the states in the given database"""
 
-    err_message = "usage: {} <username> <password> <db_name>\n".format(argv[0])
+    err_msg = "usage: {} <username> <password> <db_name>\n".format(argv[0])
     if len(argv) != 4:
-        stderr.write(err_message)
+        stderr.write(err_msg)
         return
 
     username, password, db_name = argv[1], argv[2], argv[3]
 
     db = MySQLdb.connect(
         host="localhost",
-	user=username,
-	passwd=password,
-	db=db_name,
-	charset="utf8",
-	port=3306
+        user=username,
+        passwd=password,
+        db=db_name,
+        charset="utf8",
+        port=3306
     )
 
     cur = db.cursor()
-    cur.exexute("SELECT * FROM states ORDER BY id")
+    cur.execute("SELECT * FROM states ORDER BY id ASC")
     results = cur.fetchall()
 
-    for line in results:
-        print(line)
+    for row in results:
+        print(row)
 
     db.close()
 
