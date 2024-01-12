@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 
+"""
 a script thatt lists all states from database
 """
 
