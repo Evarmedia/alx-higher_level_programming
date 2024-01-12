@@ -27,7 +27,7 @@ def listStates():
     )
 
     cur = db.cursor()
-    cur.execute("SELECT * FROM states ORDER BY id")
+    cur.execute("SELECT * FROM states ORDER BY id ASC")
     results = cur.fetchall()
 
     for line in results:
