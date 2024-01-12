@@ -1,35 +1,40 @@
 #!/usr/bin/python3
+"""
+a script that lists all states tarting with an N from database
+"""
 
 import MySQLdb
-import sys
+from sys import argv, stderr
 
-def list_states_starting_with_n(username, password, database):
-    # Connect to MySQL server
-    db = MySQLdb.connect("localhost", user=username, passwd=password, db=database)
 
-    # Create a cursor object
-    cursor = db.cursor()
+def listOf_States_Starting_With_N():
+    """function to list only the states that start with N in given database"""
 
-    # Execute the query to retrieve states starting with 'N' and sort by id
-    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id"
-    cursor.execute(query)
+    err_message = "usage: {} <username> <password> <db_name>\n".format(argv[0])
+    if len(argv) != 4:
+        stderr.write(err_message)
+        return
 
-    # Fetch all the rows
-    data = cursor.fetchall()
+    username, password, db_name = argv[1], argv[2], argv[3]
 
-    # Display results
-    for state in data:
-        print(state)
+    db = MySQLdb.connect(
+        host="localhost",
+	user=username,
+	passwd=password,
+	db=db_name,
+	charset="utf8",
+	port=3306
+    )
 
-    # Close the connection
+    cur = db.cursor()
+    cur.execute("SELECT * FROM states WHERE name LIKE BINARY 'N%' ORDER BY id ASC")
+    results = cur.fetchall()
+
+    for line in results:
+        print(line)
+
     db.close()
 
+
 if __name__ == "__main__":
-    # Get the arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
-
-    # Call the function with provided arguments
-    list_states_starting_with_n(username, password, database)
-
+    listOf_States_Starting_With_N()
