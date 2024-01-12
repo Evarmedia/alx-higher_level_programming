@@ -6,6 +6,7 @@ a script that lists all states from database
 import MySQLdb
 from sys import argv, stderr
 
+
 def listStates():
     """function to list the states in a given database"""
 
@@ -33,5 +34,7 @@ def listStates():
         print(row)
 
     db.close()
+
+
 if __name__ == "__main__":
     listStates()
