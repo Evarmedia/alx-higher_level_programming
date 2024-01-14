@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
 list all states matching user input in database `hbtn_0e_0_usa`
-this version is safe from MySQL injection attacks.
 """
 
 import MySQLdb
@@ -30,8 +29,10 @@ def getState():
     )
 
     cur = db.cursor()
-    query = "SELECT * FROM states WHERE name=%s ORDER BY id ASC"
-    cur.execute(query, (state,))
+    query = "SELECT * FROM states WHERE name LIKE BINARY '{}' \
+    ORDER BY id ASC".format(state)
+
+    cur.execute(query)
     result = cur.fetchall()
 
     for row in result:
