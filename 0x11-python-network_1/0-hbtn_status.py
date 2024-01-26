@@ -2,29 +2,24 @@
 """This module contains the code to data fetch `https://alx-intranet.hbtn.io/status`"""
 
 from urllib.request import urlopen, Request
-from urllib.error import URLError
+from urllib.error import URLError, HTTPError
 
-
-def fetch_body(site_url):
-    """Fetches the data and displays the body"""
-
-    reqst = Request(site_url)
+def fetch_body():
+    """Fetches the site and the body"""
+    target_url = "https://alx-intranetbtn.io/status"
+    request = Request(target_url)
 
     try:
-        with urlopen(reqst) as response:
-            response_body = response.read()
-    except URLError as e:
-        if hasattr(e, 'reason'):
-            print("Reason: ", e.reason)
-        elif hasattr(e, 'code'):
-            print("Error code: ", e.code)
-    else:
+        response = urlopen(request)
+        response_body = response.read()
         print("Body response:")
         print("\t- type: {}".format(type(response_body)))
         print("\t- content: {}".format(response_body))
         print("\t- utf8 content: {}".format(response_body.decode("utf-8")))
-
+    except HTTPError as error:
+        print("Error code: ", error.code)
+    except URLError as error:
+        print("Reason: ", error.reason)
 
 if __name__ == "__main__":
-    fetch_body("https://alx-intranet.hbtn.io/status")
-    
+    fetch_body()
