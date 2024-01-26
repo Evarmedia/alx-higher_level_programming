@@ -26,4 +26,4 @@ def fetch_body(site_url):
 
 
 if __name__ == "__main__":
-    fetch_body("https://alx-intranet.hbtn.io/status")    
+    fetch_body("https://alx-intranet.hbtn.io/status")
