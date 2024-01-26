@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""This module contains code to `POST` an ur_email to a ur_url passed as argument
+"""This module contains code to `POST` and
+ur_email to a ur_url passed as argument
 """
 
 import requests

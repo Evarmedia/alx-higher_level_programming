@@ -7,6 +7,7 @@ import urllib.parse
 import urllib.request
 import sys
 
+
 def send_post_request_to_server(url, email):
     data = urllib.parse.urlencode({'email': email}).encode('utf-8')
     req = urllib.request.Request(url, data=data, method='POST')
@@ -14,6 +15,7 @@ def send_post_request_to_server(url, email):
     with urllib.request.urlopen(req) as response:
         body = response.read()
         print(body.decode('utf-8'))
+
 
 if __name__ == "__main__":
     url = sys.argv[1]

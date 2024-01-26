@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Sends a request to given url_target and displays the body of the response in utf-8
+"""Sends a request to given url_target and
+displays the body of the response in utf-8
 Error handling is allowed here
 """
 
