@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This module contains the code to data fetch `https://alx-intranet.hbtn.io/status`"""
+"""This module contains the code to data fetch `https://alx...`"""
 
 from urllib.request import urlopen, Request
 from urllib.error import URLError
@@ -26,5 +26,4 @@ def fetch_body(site_url):
 
 
 if __name__ == "__main__":
-    fetch_body("https://alx-intranet.hbtn.io/status")
-    
+    fetch_body("https://alx-intranet.hbtn.io/status")    
