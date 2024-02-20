@@ -7,12 +7,7 @@ const characterId = 18;
 request(apiUrl, (error, response, body) => {
   if (!error && response.statusCode === 200) {
     const films = JSON.parse(body).results;
-    const count = films.reduce((acc, film) => {
-      if (film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)) {
-        return acc + 1;
-      }
-      return acc;
-    }, 0);
+    const count = films.filter(film => film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)).length;
     console.log(count);
   } else {
     console.error('An error occurred while fetching the movie count:', error);
