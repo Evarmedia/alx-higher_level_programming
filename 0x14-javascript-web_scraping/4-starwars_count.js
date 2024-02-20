@@ -1,14 +1,16 @@
 #!/usr/bin/node
 const request = require('request');
 
-const apiUrl = process.argv[2];
-const characterId = 18;
-
-request(apiUrl, (error, response, body) => {
+request(process.argv[2], function (error, response, body) {
   if (!error && response.statusCode === 200) {
-    const { results } = JSON.parse(body);
-    const moviesWithWedgeAntilles = results.filter(film => film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`));
-    console.log(moviesWithWedgeAntilles.length);
+    const films = JSON.parse(body).results;
+    let count = 0;
+    for (let i = 0; i < films.length; i++) {
+      if (films[i].characters.find((character) => character.endsWith('/18/'))) {
+        count++;
+      }
+    }
+    console.log(count);
   } else {
     console.error('An error occurred while fetching the movie count:', error);
   }
