@@ -6,9 +6,9 @@ const characterId = 18;
 
 request(apiUrl, (error, response, body) => {
   if (!error && response.statusCode === 200) {
-    const films = JSON.parse(body).results;
-    const count = films.filter(film => film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`)).length;
-    console.log(count);
+    const { results } = JSON.parse(body);
+    const moviesWithWedgeAntilles = results.filter(film => film.characters.includes(`https://swapi-api.alx-tools.com/api/people/${characterId}/`));
+    console.log(moviesWithWedgeAntilles.length);
   } else {
     console.error('An error occurred while fetching the movie count:', error);
   }
